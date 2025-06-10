@@ -1,36 +1,52 @@
-//
-//  HerosModel.swift
-//  swiftUI_aentrena
-//
-//  Created by Álvaro Entrena Casas on 10/6/25.
-//
 
 import Foundation
 
-struct CharactersModel: Codable, Identifiable, Sendable {
-    var id: UUID
-    var name: String
-    var description: String
-    var modified: String
-    var thumbnail: Image
-    var resourceURL: String
-    var series: SeriesList
+struct CharactersResponse: Codable {
+    let data: CharactersData
 }
 
-struct Image: Codable {
+struct CharactersData: Codable {
+    let results: [CharacterResult]
+}
+
+struct CharacterResult: Codable, Identifiable {
+    let id: Int
+    let name: String
+    let description: String
+    let thumbnail: Thumbnail
+    let series: Series
+}
+
+struct Thumbnail: Codable {
     let path: String
-    let `extension`: String
+    let thumbnailExtension: Extension
+    
+    enum CodingKeys: String, CodingKey {
+        case path
+        case thumbnailExtension = "extension"
+    }
 }
 
-struct SeriesList: Codable {
+enum Extension: String, Codable {
+    case gif = "gif"
+    case jpg = "jpg"
+}
+
+struct Series: Codable {
     let available: Int
     let collectionURL: String
-    let items: [SeriesSummary]
+    let items: [SerieItem]
     let returned: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case available
+        case collectionURL = "collectionURI"
+        case items
+        case returned 
+    }
 }
 
-struct SeriesSummary: Codable {
-    let resourceURL: String
+struct SerieItem: Codable {
+    let resourceURI: String
     let name: String
 }
-

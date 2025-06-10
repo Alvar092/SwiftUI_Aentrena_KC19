@@ -43,22 +43,11 @@
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
-/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		677E8F8A2DF84F4F00DBD268 /* Exceptions for "swiftUI_aentrena" folder in "Compile Sources" phase from "swiftUI_aentrena" target */ = {
-			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = 67E6A4A52DEDACD500DFD594 /* Sources */;
-			membershipExceptions = (
-				"Preview Content/characters.json",
-			);
-		};
-/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		67E6A4AB2DEDACD500DFD594 /* swiftUI_aentrena */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				677E8F892DF84F4F00DBD268 /* Exceptions for "swiftUI_aentrena" folder in "swiftUI_aentrena" target */,
-				677E8F8A2DF84F4F00DBD268 /* Exceptions for "swiftUI_aentrena" folder in "Compile Sources" phase from "swiftUI_aentrena" target */,
 			);
 			path = swiftUI_aentrena;
 			sourceTree = "<group>";
