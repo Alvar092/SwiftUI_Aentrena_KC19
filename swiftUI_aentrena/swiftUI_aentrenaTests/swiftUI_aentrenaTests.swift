@@ -12,19 +12,27 @@ import Combine
 
 struct swiftUI_aentrenaTests {
     @Suite("Data Testing") struct DataTests {
-        @Suite("Network", .serialized) struct ModelTest{
+        @Suite("Network", .serialized) struct NetworkTest{
             @Test("NetworkCharacters")
             func getCharactersTest() async throws {
                 // GIVEN
                 let network = NetworkCharacters()
                 
                 // WHEN
-                let characters = await network.getCharacters()
+                let response = await network.getCharacters()
                 
                 // THEN
-                #expect(!characters.isEmpty, "La respuesta no debería estar vacia")
-                #expect(characters.first?.id != nil, "El primer personaje tiene que tener un id válido")
-                #expect(characters.first?.name.isEmpty == false, "El primer personaje debería tener nombre")
+                #expect(response != nil, "La respuesta no puede ser nil")
+                
+                guard let characters = response?.data.results else {
+                    #expect(Bool(false), "no se pudieron obtener los personajes")
+                    return
+                }
+                
+                #expect(!characters.isEmpty, "La respuesta no puede estar vacia")
+                #expect(characters.first?.id != nil, "El primer personaje debe tener un id válido")
+                #expect(!(characters.first?.name.isEmpty ?? true), "El primer personaje debe tener nombre")
+                #expect(characters.count == 20, "Debería haber 20 personajes")
             }
             
             @Test("NetworkCharactersMock")
@@ -33,16 +41,55 @@ struct swiftUI_aentrenaTests {
                 let network = NetworkCharactersMock()
                 
                 // WHEN
-                let characters = await network.getCharacters()
+                let response = await network.getCharacters()
                 
                 // THEN
-                #expect(characters.count == 1, "La respuesta no debería estar vacia")
-               
+                #expect(response != nil, "La respuesta no debería ser nil")
+                let characters = response?.data.results ?? []
+                #expect(characters.count == 1, "La respuesta mock debería contener 1 pj")
+                
+            }
+        } // Network
+        
+        @Suite("Respository", .serialized) struct RepoTest{
+            @Test("CharactersRepositoryMappedTest")
+            func getCharactersMappedTest() async throws {
+                // GIVEN
+                let network = NetworkCharactersMock()
+                let repository = CharactersRepository(network: network)
+                
+                // WHEN
+                let characters = await repository.getCharactersMapped()
+                
+                // THEN
+                #expect(!characters.isEmpty, "La lista de personajes debe tener al menos uno")
+                #expect(characters[0].name == "3-D Man", "El personaje debe tener un nombre")
+            }
+            
+            
+        } // Repository
+    }// Data Testing
+    
+    @Suite("Domain Testing") struct DomainTests {
+        @Suite("Usecases", .serialized) struct UseCasesTest{
+            @Test("GetCharactersUseCase")
+            func getCharactersTest() async throws {
+                // GIVEN
+                let network = NetworkCharactersMock()
+                let repository = CharactersRepository(network: network)
+                let useCase = CharactersUseCase(repoCharacters: repository)
+                
+                // WHEN
+                let characters = await useCase.getCharacters()
+                
+                // THEN
+                #expect(characters.count == 1, "Debería haber un heroe, que es el que tiene el mock")
+                #expect(characters[0].name == "3-D Man", "El personaje debería tener ese nombre ")
             }
         }
     }
-
 }
+
 
 
 
