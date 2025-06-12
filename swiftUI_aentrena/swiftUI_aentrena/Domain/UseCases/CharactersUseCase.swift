@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CharactersUseCaseProtocol {
-    var repoCharacters: CharactersRepository {get set}
+    var repoCharacters: CharactersRepositoryProtocol {get set}
     
     func getCharacters() async -> [CharacterResult]
 }
@@ -16,9 +16,9 @@ protocol CharactersUseCaseProtocol {
 // Real
 final class CharactersUseCase: CharactersUseCaseProtocol {
     
-    var repoCharacters: CharactersRepository
+    var repoCharacters: CharactersRepositoryProtocol
     
-    init(repoCharacters: CharactersRepository = CharactersRepository(network: NetworkCharacters())) {
+    init(repoCharacters: CharactersRepositoryProtocol = CharactersRepository(network: NetworkCharacters())) {
         self.repoCharacters = repoCharacters
     }
     
@@ -30,9 +30,9 @@ final class CharactersUseCase: CharactersUseCaseProtocol {
 // Mock
 final class CharactersUseCaseMock: CharactersUseCaseProtocol {
     
-    var repoCharacters: CharactersRepository
+    var repoCharacters: CharactersRepositoryProtocol
     
-    init(repoCharacters: CharactersRepository = CharactersRepository(network: NetworkCharactersMock())) {
+    init(repoCharacters: CharactersRepositoryProtocol = CharactersRepositoryMock()) {
         self.repoCharacters = repoCharacters
     }
     

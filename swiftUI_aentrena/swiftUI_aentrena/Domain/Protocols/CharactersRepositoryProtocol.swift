@@ -9,4 +9,5 @@ import Foundation
 
 protocol CharactersRepositoryProtocol {
     func getCharactersMapped() async -> [CharacterResult]
+    func getSeriesMapped(id: String) async -> [Series]
 }

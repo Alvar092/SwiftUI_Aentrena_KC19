@@ -11,6 +11,10 @@ struct CharactersView: View {
     @Environment(AppStateVM.self) var appState
     @State var viewModel: CharactersViewModel
     
+    //Solo para la transicion al detalle
+    @Namespace
+    private var nameSpace
+    
     init(viewModel: CharactersViewModel = CharactersViewModel()){
         self.viewModel = viewModel
     }
@@ -21,11 +25,12 @@ struct CharactersView: View {
                 ForEach(viewModel.characters) { character in
                     NavigationLink{
                         // Destination (hacer tap para desplegar el detalle)
-                        
-                        
+                        CharacterDetailView(character: character, vmSeries: CharactersDetailViewModel(character: character))
+                            .navigationTransition(.zoom(sourceID: character.id, in: nameSpace ))
                     } label: {
                         // Row del personaje
                         CharacterRowView(character: character)
+                            .frame(height: 200)
                     }
                 }
             }
@@ -37,6 +42,9 @@ struct CharactersView: View {
 }
 
 #Preview {
-    CharactersView(viewModel: CharactersViewModel(useCase: CharactersUseCaseMock()))
+    CharactersView(
+        viewModel: CharactersViewModel(
+            useCase: CharactersUseCaseMock()
+        ))
         .environment(AppStateVM())
 }

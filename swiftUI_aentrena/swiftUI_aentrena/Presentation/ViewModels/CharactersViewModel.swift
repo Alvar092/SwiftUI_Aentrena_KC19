@@ -19,6 +19,11 @@ final class CharactersViewModel {
     
     init(useCase: CharactersUseCaseProtocol = CharactersUseCase()) {
         self.useCase = useCase
+        
+        Task{
+            await self.getCharacters()
+        }
+        
     }
     
     

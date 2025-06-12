@@ -46,7 +46,7 @@ struct swiftUI_aentrenaTests {
                 // THEN
                 #expect(response != nil, "La respuesta no debería ser nil")
                 let characters = response?.data.results ?? []
-                #expect(characters.count == 1, "La respuesta mock debería contener 1 pj")
+                #expect(characters.count == 2, "La respuesta mock debería contener 2 pj")
                 
             }
         } // Network
@@ -66,6 +66,20 @@ struct swiftUI_aentrenaTests {
                 #expect(characters[0].name == "3-D Man", "El personaje debe tener un nombre")
             }
             
+            @Test("CharactersRespositoryMockMappedTest")
+            func getCharacteresMappedMockTest() async throws {
+                // GIVEN
+                let network = NetworkCharactersMock()
+                let repository = CharactersRepositoryMock(network: network)
+                
+                // WHEN
+                let characters = await repository.getCharactersMapped()
+                
+                // THEN
+                #expect(!characters.isEmpty, "La lista debería tener al menos un pj")
+                #expect(characters.count == 2, "Debería devolver 2 personajes")
+            }
+            
             
         } // Repository
     }// Data Testing
@@ -83,7 +97,7 @@ struct swiftUI_aentrenaTests {
                 let characters = await useCase.getCharacters()
                 
                 // THEN
-                #expect(characters.count == 1, "Debería haber un heroe, que es el que tiene el mock")
+                #expect(characters.count == 2, "Debería haber 2 heroes")
                 #expect(characters[0].name == "3-D Man", "El personaje debería tener ese nombre ")
             }
         }

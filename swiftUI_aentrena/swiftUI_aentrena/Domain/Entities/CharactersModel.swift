@@ -14,7 +14,7 @@ struct CharacterResult: Codable, Identifiable {
     let name: String
     let description: String
     let thumbnail: Thumbnail
-    let series: Series
+
 }
 
 struct Thumbnail: Codable {
@@ -32,21 +32,25 @@ enum Extension: String, Codable {
     case jpg = "jpg"
 }
 
-struct Series: Codable {
-    let available: Int
-    let collectionURL: String
-    let items: [SerieItem]
-    let returned: Int
-    
-    enum CodingKeys: String, CodingKey {
-        case available
-        case collectionURL = "collectionURI"
-        case items
-        case returned 
-    }
+
+struct SeriesResponse: Codable {
+    let data: SeriesData
 }
 
-struct SerieItem: Codable {
-    let resourceURI: String
-    let name: String
+struct SeriesData: Codable {
+    let results: [Series]
+}
+
+struct Series: Codable, Identifiable {
+    let id: Int
+    let title: String
+    let description: String?
+    let thumbnail: Thumbnail
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case title
+        case description
+        case thumbnail
+    }
 }
