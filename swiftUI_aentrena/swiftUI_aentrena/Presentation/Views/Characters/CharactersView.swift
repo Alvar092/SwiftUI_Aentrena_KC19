@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CharactersView: View {
-    @Environment(AppStateVM.self) var appState
+
     @State var viewModel: CharactersViewModel
     
     //Solo para la transicion al detalle
@@ -34,9 +34,8 @@ struct CharactersView: View {
                     }
                 }
             }
+            .id(0)
             .navigationTitle("Characters")
-            .searchable(text: $viewModel.filterUI, prompt: "Search by name") // Esto tiene sentido si los primeros 20 son A?? 
-            // TO DO: Implementar la dinámica de filtrar los heroes???
         } // NavStack
     }
 }
@@ -46,5 +45,4 @@ struct CharactersView: View {
         viewModel: CharactersViewModel(
             useCase: CharactersUseCaseMock()
         ))
-        .environment(AppStateVM())
 }

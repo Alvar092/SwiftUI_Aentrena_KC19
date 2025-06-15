@@ -9,8 +9,6 @@ import SwiftUI
 
 struct SerieRowView: View {
     
-    
-    
     var serie: Series
     
     var body: some View {
@@ -30,10 +28,15 @@ struct SerieRowView: View {
                     .shadow(radius: 5)
                     .bold()
             }//VStack
-            Text(serie.title)
-                .font(.title2)
-                .foregroundStyle(.black)
-                .bold()
+            VStack{
+                Spacer()
+                Text(serie.title)
+                    .font(.title2)
+                    .foregroundStyle(.black)
+                    .bold()
+                    .padding()
+                Spacer()
+            }
         } //ZStack
         .padding()
     }
@@ -44,5 +47,4 @@ struct SerieRowView: View {
         title: "Avengers: The Initiative (2007 - 2010)",
         description: "Wade Wilson: Heartless Merc With a Mouth or...hero? Laugh, cry and applaud at full volume for the mind-bending adventures of Deadpool, exploring the psyche and crazed adventures of Marvel's most unstable personality!" ,
         thumbnail: Thumbnail(path: "http://i.annihil.us/u/prod/marvel/i/mg/5/a0/514a2ed3302f5", thumbnailExtension: Extension.jpg)))
-    .environment(AppStateVM())
 }

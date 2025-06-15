@@ -90,7 +90,7 @@ final class NetworkCharactersMock: NetworkCharactersProtocol {
         return response
     }
     
-    func getSeries(id: String) async -> SeriesResponse? {
+    func getSeries(id: String = "1011334") async -> SeriesResponse? {
         let response = SeriesResponse(
             data: SeriesData(
                 results: [Series(

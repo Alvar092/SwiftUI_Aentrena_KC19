@@ -22,8 +22,10 @@ struct CharacterDetailView: View {
                 ForEach(vmSeries.series) { serie in
                     SerieRowView(serie: serie)
                 }
-                .frame(height: 200)
+                .frame(height: 300)
             }
+            .navigationTitle("Series")
+            
         }
         
         
@@ -40,5 +42,4 @@ struct CharacterDetailView: View {
             name: "3-D Man",
             description: "",
             thumbnail: Thumbnail(path: "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784", thumbnailExtension: Extension.jpg)), useCase:SeriesUseCaseMock()))
-        .environment(AppStateVM())
 }

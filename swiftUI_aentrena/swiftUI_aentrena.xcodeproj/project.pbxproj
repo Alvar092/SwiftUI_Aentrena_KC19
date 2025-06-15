@@ -6,10 +6,6 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		67FEB6932DEDBE5A00A17050 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 67FEB6922DEDBE5A00A17050 /* KeychainSwift */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXContainerItemProxy section */
 		67E6A4BB2DEDACD600DFD594 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -33,22 +29,9 @@
 		67E6A4C42DEDACD600DFD594 /* swiftUI_aentrenaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = swiftUI_aentrenaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		677E8F892DF84F4F00DBD268 /* Exceptions for "swiftUI_aentrena" folder in "swiftUI_aentrena" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				"Preview Content/characters.json",
-			);
-			target = 67E6A4A82DEDACD500DFD594 /* swiftUI_aentrena */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		67E6A4AB2DEDACD500DFD594 /* swiftUI_aentrena */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				677E8F892DF84F4F00DBD268 /* Exceptions for "swiftUI_aentrena" folder in "swiftUI_aentrena" target */,
-			);
 			path = swiftUI_aentrena;
 			sourceTree = "<group>";
 		};
@@ -69,7 +52,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67FEB6932DEDBE5A00A17050 /* KeychainSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,7 +112,6 @@
 			);
 			name = swiftUI_aentrena;
 			packageProductDependencies = (
-				67FEB6922DEDBE5A00A17050 /* KeychainSwift */,
 			);
 			productName = swiftUI_aentrena;
 			productReference = 67E6A4A92DEDACD500DFD594 /* swiftUI_aentrena.app */;
@@ -211,11 +192,11 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 67E6A4A02DEDACD500DFD594;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				67FEB6912DEDBE5A00A17050 /* XCRemoteSwiftPackageReference "keychain-swift" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 67E6A4AA2DEDACD500DFD594 /* Products */;
@@ -348,6 +329,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -402,6 +384,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 			};
 			name = Release;
 		};
@@ -613,25 +596,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		67FEB6912DEDBE5A00A17050 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/evgenyneu/keychain-swift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 24.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		67FEB6922DEDBE5A00A17050 /* KeychainSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 67FEB6912DEDBE5A00A17050 /* XCRemoteSwiftPackageReference "keychain-swift" */;
-			productName = KeychainSwift;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 67E6A4A12DEDACD500DFD594 /* Project object */;
 }

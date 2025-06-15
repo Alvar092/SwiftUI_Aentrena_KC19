@@ -63,7 +63,7 @@ final class CharactersRepositoryMock: CharactersRepositoryProtocol {
         return characters
     }
     
-    func getSeriesMapped(id: String) async -> [Series] {
+    func getSeriesMapped(id: String = "1011334") async -> [Series] {
         guard let response = await network.getSeries(id: id) else { return [] }
         
         let series = response.data.results.map{ result in

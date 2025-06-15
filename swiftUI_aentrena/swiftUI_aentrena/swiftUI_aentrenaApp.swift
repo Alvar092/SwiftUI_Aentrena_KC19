@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct swiftUI_aentrenaApp: App {
+    
+//    @State var AppState = AppStateVM()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CharactersView()
+//                .environment(AppState)
         }
     }
 }
