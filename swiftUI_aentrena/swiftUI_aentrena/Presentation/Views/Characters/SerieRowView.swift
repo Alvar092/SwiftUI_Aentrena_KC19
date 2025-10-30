@@ -22,6 +22,7 @@ struct SerieRowView: View {
                 } placeholder: {
                     Color.gray.opacity(0.3)
                 }
+                Spacer()
                 Text(serie.description ?? "")
                     .font(.callout)
                     .foregroundColor(.black)
